@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.homepage.entities.Person">
+    <resultMap id="Person" type="com.example.homepage.entities.Person">
+        <result column="name" property="name" />
+    </resultMap>
+
+    <sql id="tb">
+        person
+    </sql>
+
+    <sql id="cols_exclude_id">
+        `name`
+    </sql>
+
+    <sql id="vals">
+        #{name}
+    </sql>
+
+    <insert id="create" parameterType="com.example.homepage.entities.Person" >
+        INSERT INTO
+        <include refid="tb" />
+        (
+        <include refid="cols_exclude_id" />
+        )
+        VALUES
+        (
+        <include refid="vals" />
+        )
+    </insert>
+</mapper>
